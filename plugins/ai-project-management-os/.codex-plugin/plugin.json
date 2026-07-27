@@ -1,0 +1,27 @@
+{
+  "name": "ai-project-management-os",
+  "version": "1.2.0",
+  "description": "A governed project-management agent that creates and runs local projects from intake through improvement.",
+  "author": {
+    "name": "databoh",
+    "url": "https://github.com/databoh"
+  },
+  "homepage": "https://github.com/databoh/ai-project-management-os",
+  "repository": "https://github.com/databoh/ai-project-management-os",
+  "keywords": ["project-management", "product-management", "codex", "delivery", "ai"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AI Project Management OS",
+    "shortDescription": "Create and run governed local projects.",
+    "longDescription": "AI PM OS interviews the user, safely creates a local project workspace, persists lifecycle state, and guides work through evidence-based gates from intake to release and improvement.",
+    "developerName": "databoh",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "websiteURL": "https://github.com/databoh/ai-project-management-os",
+    "defaultPrompt": [
+      "Create a new project with AI PM OS.",
+      "Resume this AI PM OS project.",
+      "Show the governed status of this project."
+    ]
+  }
+}

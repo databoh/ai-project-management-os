@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI PM Run Phase"
+  short_description: "Execute the current lifecycle phase"
+  default_prompt: "Use $ai-pm-run-phase to perform the next responsible phase of this project."

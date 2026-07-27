@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/databoh/ai-project-management-os/schemas/state.schema.json",
+  "title": "AI PM OS lifecycle state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "osVersion", "projectId", "status", "currentStage", "currentGate", "gateStatus", "completedStages", "activeArtifacts", "openQuestions", "blockingDecisions", "nextAction", "updatedAt"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "osVersion": {"type": "string"},
+    "projectId": {"type": "string"},
+    "status": {"enum": ["active", "paused", "complete"]},
+    "currentStage": {"type": "string"},
+    "currentGate": {"type": ["string", "null"]},
+    "gateStatus": {"enum": ["pending", "draft", "pass", "conditional-pass", "fail", "not-applicable"]},
+    "completedStages": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "activeArtifacts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "openQuestions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "blockingDecisions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "nextAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skill", "objective"],
+      "properties": {
+        "skill": {"type": "string"},
+        "objective": {"type": "string"}
+      }
+    },
+    "updatedAt": {"type": "string", "format": "date-time"}
+  }
+}

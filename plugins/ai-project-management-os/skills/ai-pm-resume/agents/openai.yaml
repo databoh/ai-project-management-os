@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI PM Resume"
+  short_description: "Resume work from persisted project state"
+  default_prompt: "Use $ai-pm-resume to inspect this project and continue from its current lifecycle gate."

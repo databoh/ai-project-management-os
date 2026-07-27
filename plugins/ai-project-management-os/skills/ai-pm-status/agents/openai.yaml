@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI PM Status"
+  short_description: "Report governed project status"
+  default_prompt: "Use $ai-pm-status to summarize the lifecycle state, gaps, and next action."

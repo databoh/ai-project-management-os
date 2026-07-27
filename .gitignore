@@ -1,0 +1,25 @@
+.DS_Store
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials.json
+secrets.json
+
+# Dependencies, build output, logs, and editor state
+node_modules/
+coverage/
+dist/
+build/
+*.log
+*.tmp
+*.swp
+.idea/
+.vscode/

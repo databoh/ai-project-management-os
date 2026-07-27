@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/databoh/ai-project-management-os/schemas/approvals.schema.json",
+  "title": "AI PM OS gate approvals register",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "projectId", "approvals"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "projectId": {"type": "string"},
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "stage", "gate", "outcome", "approvedBy", "approvedAt", "reviewArtifact", "reviewSha256", "conditions"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^APR-[0-9a-f-]{36}$"},
+          "stage": {"type": "string"},
+          "gate": {"type": "string", "pattern": "^G[0-7]$"},
+          "outcome": {"enum": ["pass", "conditional-pass"]},
+          "approvedBy": {"type": "string", "minLength": 1},
+          "approvedAt": {"type": "string", "format": "date-time"},
+          "reviewArtifact": {"type": "string", "minLength": 1},
+          "reviewSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "conditions": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    }
+  }
+}

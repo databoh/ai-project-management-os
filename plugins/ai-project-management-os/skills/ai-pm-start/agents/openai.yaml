@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI PM Start"
+  short_description: "Create a governed project workspace"
+  default_prompt: "Use $ai-pm-start to interview me and create a new local project workspace."

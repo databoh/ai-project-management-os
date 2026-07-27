@@ -1,0 +1,109 @@
+{
+  "version": "1.2.0",
+  "stages": [
+    {
+      "id": "0-intake",
+      "name": "Intake",
+      "gate": "G0",
+      "method": "lifecycle/intake.md",
+      "artifactDirectory": "docs/00-intake",
+      "nextStage": "1-discovery"
+    },
+    {
+      "id": "1-discovery",
+      "name": "Discovery",
+      "gate": "G1",
+      "method": "lifecycle/discovery.md",
+      "artifactDirectory": "docs/01-discovery",
+      "nextStage": "2-product-definition"
+    },
+    {
+      "id": "2-product-definition",
+      "name": "Product definition",
+      "gate": "G2",
+      "method": "product/product-vision.md",
+      "artifactDirectory": "docs/02-product-definition",
+      "nextStage": "3-scope-and-requirements"
+    },
+    {
+      "id": "3-scope-and-requirements",
+      "name": "Scope and requirements",
+      "gate": "G3",
+      "method": "lifecycle/requirements.md",
+      "artifactDirectory": "docs/03-requirements",
+      "nextStage": "4-solution-outline"
+    },
+    {
+      "id": "4-solution-outline",
+      "name": "Solution outline",
+      "gate": "G3",
+      "method": "lifecycle/solution-outline.md",
+      "artifactDirectory": "docs/04-architecture",
+      "nextStage": "5-decomposition"
+    },
+    {
+      "id": "5-decomposition",
+      "name": "Decomposition",
+      "gate": null,
+      "method": "lifecycle/decomposition.md",
+      "artifactDirectory": "docs/05-decomposition",
+      "nextStage": "6-estimation"
+    },
+    {
+      "id": "6-estimation",
+      "name": "Estimation",
+      "gate": null,
+      "method": "lifecycle/estimation.md",
+      "artifactDirectory": "docs/06-estimation",
+      "nextStage": "7-prioritization"
+    },
+    {
+      "id": "7-prioritization",
+      "name": "Prioritization",
+      "gate": null,
+      "method": "lifecycle/prioritization.md",
+      "artifactDirectory": "docs/07-prioritization",
+      "nextStage": "8-roadmap-and-release-planning"
+    },
+    {
+      "id": "8-roadmap-and-release-planning",
+      "name": "Roadmap and release planning",
+      "gate": "G4",
+      "method": "lifecycle/roadmap.md",
+      "artifactDirectory": "docs/08-roadmap",
+      "nextStage": "9-delivery-setup"
+    },
+    {
+      "id": "9-delivery-setup",
+      "name": "Delivery setup",
+      "gate": "G5",
+      "method": "lifecycle/delivery-setup.md",
+      "artifactDirectory": "docs/09-delivery",
+      "nextStage": "10-execution-and-control"
+    },
+    {
+      "id": "10-execution-and-control",
+      "name": "Execution and control",
+      "gate": null,
+      "method": "metrics/delivery-metrics.md",
+      "artifactDirectory": "docs/10-execution",
+      "nextStage": "11-release"
+    },
+    {
+      "id": "11-release",
+      "name": "Release",
+      "gate": "G6",
+      "method": "playbooks/production-release.md",
+      "artifactDirectory": "docs/11-release",
+      "nextStage": "12-hypercare-and-improvement"
+    },
+    {
+      "id": "12-hypercare-and-improvement",
+      "name": "Hypercare and improvement",
+      "gate": "G7",
+      "method": "metrics/metric-dictionary.md",
+      "artifactDirectory": "docs/12-improvement",
+      "nextStage": null
+    }
+  ]
+}

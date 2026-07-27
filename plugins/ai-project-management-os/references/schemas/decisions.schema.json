@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/databoh/ai-project-management-os/schemas/decisions.schema.json",
+  "title": "AI PM OS decisions register",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "projectId", "decisions"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "projectId": {"type": "string"},
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "classification", "status", "statement", "rationale", "evidence"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^D-[0-9]{3,}$"},
+          "classification": {"enum": ["D1", "D2", "D3"]},
+          "status": {"enum": ["proposed", "approved", "rejected", "superseded"]},
+          "statement": {"type": "string", "minLength": 1},
+          "rationale": {"type": "string", "minLength": 1},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "approver": {"type": ["string", "null"]},
+          "decidedAt": {"type": ["string", "null"], "format": "date-time"}
+        }
+      }
+    }
+  }
+}

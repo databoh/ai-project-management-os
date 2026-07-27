@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI PM Gate Review"
+  short_description: "Evaluate lifecycle gate evidence"
+  default_prompt: "Use $ai-pm-gate-review to assess the current gate and record its evidence-based outcome."

@@ -1,0 +1,11 @@
+# Security-sensitive runtime and distribution surfaces require maintainer review.
+/.github/ @databoh
+/.agents/ @databoh
+/plugins/ai-project-management-os/.codex-plugin/ @databoh
+/plugins/ai-project-management-os/scripts/ @databoh
+/plugins/ai-project-management-os/skills/ @databoh
+/plugins/ai-project-management-os/references/runtime-contract.md @databoh
+/plugins/ai-project-management-os/references/schemas/ @databoh
+/scripts/ @databoh
+/tests/ @databoh
+/SECURITY.md @databoh

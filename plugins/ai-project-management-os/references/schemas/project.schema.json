@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/databoh/ai-project-management-os/schemas/project.schema.json",
+  "title": "AI PM OS project configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "osVersion", "id", "name", "summary", "projectType", "mode", "language", "implementationScope", "createdAt"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "osVersion": {"type": "string"},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "name": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1},
+    "projectType": {"type": "string"},
+    "mode": {"enum": ["beginner", "guided", "expert"]},
+    "language": {"type": "string"},
+    "domain": {"type": "string"},
+    "problem": {"type": "string"},
+    "targetUsers": {"type": "array", "items": {"type": "string"}},
+    "knownConstraints": {"type": "array", "items": {"type": "string"}},
+    "sourceMaterials": {"type": "array", "items": {"type": "string"}},
+    "implementationScope": {"enum": ["planning-only", "planning-and-delivery"]},
+    "createdAt": {"type": "string", "format": "date-time"}
+  }
+}

@@ -1,0 +1,44 @@
+name: Security and integrity
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Show runtime versions
+        run: |
+          node --version
+          python3 --version
+
+      - name: Check JavaScript syntax
+        run: find plugins scripts tests -type f -name '*.mjs' -print0 | xargs -0 -n1 node --check
+
+      - name: Scan tracked content and history
+        run: node scripts/security-scan.mjs --history
+
+      - name: Validate plugin and skills
+        run: |
+          python3 scripts/validate-plugin-package.py
+
+      - name: Run runtime security tests
+        run: node tests/runtime.e2e.mjs
+
+      - name: Validate methodology snapshot
+        run: node plugins/ai-project-management-os/scripts/validate-methodology-snapshot.mjs --source-root .
+
+      - name: Validate Markdown links
+        run: node scripts/validate-markdown-links.mjs
