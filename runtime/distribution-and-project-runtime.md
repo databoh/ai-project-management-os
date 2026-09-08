@@ -2,10 +2,10 @@
 title: Distribution and Project Runtime
 type: runtime-architecture
 status: active
-version: 1.2.0
+version: 1.3.0
 owners:
   - AI PM OS maintainers
-last_updated: 2026-07-27
+last_updated: 2026-09-08
 depends_on:
   - ../core/agent-role.md
   - ../core/decision-policy.md

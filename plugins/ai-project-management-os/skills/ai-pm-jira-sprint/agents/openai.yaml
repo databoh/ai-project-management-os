@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI PM Jira Sprint"
+  short_description: "Plan a governed Sprint from Jira evidence"
+  default_prompt: "Use $ai-pm-jira-sprint to import Jira planning evidence and prepare a PM-reviewed Sprint recommendation."

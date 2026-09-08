@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "osVersion": "1.2.0",
-  "generatedAt": "2026-07-27T07:48:03.999Z",
+  "osVersion": "1.3.0",
+  "generatedAt": "2026-09-07T22:38:00.416Z",
   "source": "repository canonical knowledge modules",
   "files": [
     {
       "path": "VERSION",
-      "sha256": "1e5b51cde515396a9fa762909cf8ca6584ccc564b325d2eebeea76175fe95c4d",
-      "sourceSha256": "1e5b51cde515396a9fa762909cf8ca6584ccc564b325d2eebeea76175fe95c4d"
+      "sha256": "64d23f858ef51b0f996e4966d4e27c0371b437e2d2787890b1f7ad22d4ec5663",
+      "sourceSha256": "64d23f858ef51b0f996e4966d4e27c0371b437e2d2787890b1f7ad22d4ec5663"
     },
     {
       "path": "ai/agents-and-tools.md",
@@ -445,6 +445,16 @@
       "sourceSha256": "ae868891f484961459d9565936de7296f731d4cc3212f61eb1ad7026ee9dfbb9"
     },
     {
+      "path": "templates/delivery/jira-export-draft.json",
+      "sha256": "c4027b25103f9f4ac18dfd71b14f4fa3037784eea6ca30d50c3dec65f3c29800",
+      "sourceSha256": "c4027b25103f9f4ac18dfd71b14f4fa3037784eea6ca30d50c3dec65f3c29800"
+    },
+    {
+      "path": "templates/delivery/jira-planning-input.json",
+      "sha256": "75fe3fb8f5e835e922a045e5a3617539327bdb63e19348c4b126de8566dd43b9",
+      "sourceSha256": "75fe3fb8f5e835e922a045e5a3617539327bdb63e19348c4b126de8566dd43b9"
+    },
+    {
       "path": "templates/discovery/assumptions-log.md",
       "sha256": "ca1a78e21fe7dad9d4b542ed8aa11d1c2dd400bb029cf7e6f3f01e8ad45981f4",
       "sourceSha256": "ca1a78e21fe7dad9d4b542ed8aa11d1c2dd400bb029cf7e6f3f01e8ad45981f4"
@@ -490,9 +500,14 @@
       "sourceSha256": "ff8c800d86d23dcbe16710452858f4b0a065ea12a551c1246af0a595d4b97af4"
     },
     {
+      "path": "tools/jira-planning-exchange.md",
+      "sha256": "0a6060187e89675f27275c8337e019b2d8ab3db91c80459462392d0523d73983",
+      "sourceSha256": "0a6060187e89675f27275c8337e019b2d8ab3db91c80459462392d0523d73983"
+    },
+    {
       "path": "tools/jira.md",
-      "sha256": "87b29d37251e80d3eca81ae25dc71c851983b39e66b6cfdc8af30fd68abd9635",
-      "sourceSha256": "87b29d37251e80d3eca81ae25dc71c851983b39e66b6cfdc8af30fd68abd9635"
+      "sha256": "ad685672cab6342ecae95306d75cc91abc1dfc4aed8fe359cd46a8aeff2cd7c8",
+      "sourceSha256": "ad685672cab6342ecae95306d75cc91abc1dfc4aed8fe359cd46a8aeff2cd7c8"
     }
   ]
 }

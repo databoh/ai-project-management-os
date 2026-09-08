@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "jira-export-draft",
+  "projectKey": "Replace with the Jira project key",
+  "issues": [
+    {
+      "localId": "EPIC-1",
+      "issueType": "Epic",
+      "summary": "Replace with an approved Epic summary",
+      "description": "Draft only. The PM must approve before package generation.",
+      "labels": ["ai-pm-os"]
+    },
+    {
+      "localId": "STORY-1",
+      "issueType": "Story",
+      "summary": "Replace with an approved Story summary",
+      "parentLocalId": "EPIC-1",
+      "estimatePoints": 3,
+      "labels": ["ai-pm-os"]
+    },
+    {
+      "localId": "SUBTASK-1",
+      "issueType": "Sub-task",
+      "summary": "Replace with an approved implementation sub-task",
+      "parentLocalId": "STORY-1",
+      "labels": ["ai-pm-os"]
+    }
+  ]
+}

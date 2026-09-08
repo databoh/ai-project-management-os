@@ -2,9 +2,14 @@
 
 All notable changes to AI PM OS are recorded here. The format follows Keep a Changelog principles, and versions follow Semantic Versioning.
 
-## [Unreleased]
+## [1.3.0] - 2026-09-08
 
-No unreleased changes.
+### Added
+
+- controlled Jira Sprint Planning Exchange with normalized import for Sprint history, velocity evidence, team capacity, statuses, and backlog;
+- capacity- and comparability-aware Sprint recommendation with explicit insufficient-evidence handling;
+- PM-confirmed JSON and CSV export package for new Epic, Story, Task, and Sub-task records;
+- `ai-pm-jira-sprint` plugin skill, JSON input and export-draft templates, and dependency-free planning commands.
 
 ## [1.2.0] - 2026-07-27
 

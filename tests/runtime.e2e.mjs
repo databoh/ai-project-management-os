@@ -7,6 +7,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { applyGateApproval } from "../plugins/ai-project-management-os/scripts/lib/runtime.mjs";
+import crypto from "node:crypto";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const scripts = path.join(repositoryRoot, "plugins", "ai-project-management-os", "scripts");
@@ -162,6 +163,67 @@ try {
   run("init-project.mjs", ["--input", inputFile], 1);
   assert.equal(fs.existsSync(path.join(target, ".ai-pm-os", "state.json")), true);
 
+  const jiraInput = path.join(temporaryRoot, "jira-input.json");
+  const jiraSnapshot = path.join(temporaryRoot, "jira-snapshot.json");
+  const jiraRecommendation = path.join(temporaryRoot, "jira-recommendation.json");
+  fs.writeFileSync(jiraInput, `${JSON.stringify({
+    schemaVersion: "1.0.0",
+    source: { system: "Jira", observedAt: "2026-09-08T00:00:00Z", boardId: "42", projectKey: "GAME" },
+    team: {
+      id: "gameplay-team",
+      members: [{ id: "role-gameplay", role: "Gameplay", availabilityRatio: 0.8 }],
+      availabilityRatio: 0.8,
+      knownNonDeliveryLoad: 0.1,
+      operatingBuffer: 0.1,
+      planningPointLimit: 12,
+      capacityObservationAt: "2026-09-08T00:00:00Z"
+    },
+    sprintHistory: [
+      { id: "S-1", completedAt: "2026-08-01T00:00:00Z", committedPoints: 20, completedPoints: 18, teamComparable: true, definitionOfDoneComparable: true },
+      { id: "S-2", completedAt: "2026-08-15T00:00:00Z", committedPoints: 21, completedPoints: 20, teamComparable: true, definitionOfDoneComparable: true },
+      { id: "S-3", completedAt: "2026-08-29T00:00:00Z", committedPoints: 18, completedPoints: 16, teamComparable: true, definitionOfDoneComparable: true }
+    ],
+    backlog: [
+      { key: "GAME-1", summary: "Ready gameplay story", issueType: "Story", statusCategory: "To Do", priorityRank: 1, estimatePoints: 3, ready: true, blocked: false, dependsOn: [] },
+      { key: "GAME-2", summary: "Ready dependent story", issueType: "Story", statusCategory: "To Do", priorityRank: 2, estimatePoints: 5, ready: true, blocked: false, dependsOn: ["GAME-1"] },
+      { key: "GAME-3", summary: "Blocked story", issueType: "Story", statusCategory: "To Do", priorityRank: 3, estimatePoints: 3, ready: true, blocked: true, dependsOn: [] }
+    ]
+  }, null, 2)}\n`);
+  run("jira-sprint-planning.mjs", ["import", "--input", jiraInput, "--output", jiraSnapshot]);
+  run("jira-sprint-planning.mjs", ["plan", "--input", jiraSnapshot, "--output", jiraRecommendation]);
+  const recommendation = JSON.parse(fs.readFileSync(jiraRecommendation, "utf8"));
+  assert.equal(recommendation.classification, "recommendation");
+  assert.equal(recommendation.velocity.status, "observed");
+  assert.equal(recommendation.capacity.status, "observed");
+  assert.deepEqual(recommendation.selectedWork.map((item) => item.key), ["GAME-1", "GAME-2"]);
+  assert.equal(recommendation.excludedWork.find((item) => item.key === "GAME-3").reason, "not-ready, blocked, non-backlog, or unestimated");
+
+  const jiraDraft = path.join(temporaryRoot, "jira-export-draft.json");
+  const jiraApproval = path.join(temporaryRoot, "jira-export-approval.json");
+  const jiraPackage = path.join(temporaryRoot, "jira-import-package.json");
+  fs.writeFileSync(jiraDraft, `${JSON.stringify({
+    schemaVersion: "1.0.0",
+    kind: "jira-export-draft",
+    projectKey: "GAME",
+    issues: [
+      { localId: "EPIC-1", issueType: "Epic", summary: "Gameplay foundation" },
+      { localId: "STORY-1", issueType: "Story", summary: "Ship core loop", parentLocalId: "EPIC-1", estimatePoints: 3 },
+      { localId: "SUBTASK-1", issueType: "Sub-task", summary: "Implement input", parentLocalId: "STORY-1" }
+    ]
+  }, null, 2)}\n`);
+  run("jira-sprint-planning.mjs", ["approve", "--input", jiraDraft, "--output", jiraApproval, "--approved-by", "Test PM"], 1);
+  fs.writeFileSync(jiraApproval, `${JSON.stringify({
+    schemaVersion: "1.0.0",
+    kind: "jira-export-approval",
+    status: "approved",
+    approvedBy: "Test PM",
+    approvedAt: "2026-09-08T00:00:00Z",
+    draftSha256: crypto.createHash("sha256").update(fs.readFileSync(jiraDraft)).digest("hex")
+  }, null, 2)}\n`);
+  run("jira-sprint-planning.mjs", ["export", "--input", jiraDraft, "--approval", jiraApproval, "--output", jiraPackage]);
+  assert.equal(JSON.parse(fs.readFileSync(jiraPackage, "utf8")).kind, "jira-import-package");
+  assert.equal(fs.existsSync(path.join(temporaryRoot, "jira-import-package.csv")), true);
+
   process.stdout.write(`${JSON.stringify({
     ok: true,
     checks: [
@@ -178,7 +240,9 @@ try {
       "rejected a lifecycle transition that skipped a stage",
       "kept untrusted project text out of generated agent instructions",
       "recorded an approved gate and advanced the lifecycle",
-      "refused to overwrite an existing target"
+      "refused to overwrite an existing target",
+      "validated Jira planning evidence and produced a conservative Sprint recommendation",
+      "required interactive PM approval before generating a Jira import package"
     ]
   }, null, 2)}\n`);
 } finally {

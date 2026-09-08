@@ -2,15 +2,16 @@
 title: Jira Delivery Configuration
 type: tool-implementation-guide
 status: active
-version: 0.6.0
+version: 0.7.0
 owners:
   - AI PM OS maintainers
-last_updated: 2026-07-23
+last_updated: 2026-09-08
 depends_on:
   - ../lifecycle/delivery-setup.md
   - ../delivery/workflow-statuses.md
 related:
   - clickup.md
+  - jira-planning-exchange.md
   - ../delivery/scrum.md
   - ../delivery/kanban.md
   - ../delivery/reporting.md
@@ -173,3 +174,4 @@ Apply least privilege to configuration, workflow transitions, releases, automati
 - [Scrum](../delivery/scrum.md) — Sprint and backlog controls.
 - [Kanban](../delivery/kanban.md) — pull, WIP, aging, and flow controls.
 - [Reporting](../delivery/reporting.md) — governed definitions for Jira dashboards.
+- [Jira Sprint Planning Exchange](jira-planning-exchange.md) — controlled import, Sprint recommendation, and PM-reviewed work-item export.

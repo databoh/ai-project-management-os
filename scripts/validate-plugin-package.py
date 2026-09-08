@@ -39,8 +39,8 @@ elif entries[0].get("source", {}).get("path") != "./plugins/ai-project-managemen
     errors.append("marketplace plugin source path is invalid")
 
 skill_dirs = sorted(path for path in (PLUGIN / "skills").iterdir() if path.is_dir())
-if len(skill_dirs) != 5:
-    errors.append("plugin must contain exactly five runtime skills")
+if len(skill_dirs) != 6:
+    errors.append("plugin must contain exactly six runtime skills")
 for skill_dir in skill_dirs:
     skill_file = skill_dir / "SKILL.md"
     agent_file = skill_dir / "agents" / "openai.yaml"
@@ -59,6 +59,7 @@ for skill_dir in skill_dirs:
 required_scripts = {
     "approve-gate.mjs",
     "init-project.mjs",
+    "jira-sprint-planning.mjs",
     "project-status.mjs",
     "update-state.mjs",
     "validate-project.mjs",

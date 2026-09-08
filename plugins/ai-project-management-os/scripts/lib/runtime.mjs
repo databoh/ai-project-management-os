@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const OS_VERSION = "1.2.0";
+export const OS_VERSION = "1.3.0";
 export const SCHEMA_VERSION = "1.0.0";
 export const GATE_STATUSES = [
   "pending",
