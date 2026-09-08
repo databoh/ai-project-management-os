@@ -2,10 +2,10 @@
 title: AI PM OS
 type: repository-overview
 status: active
-version: 1.2.0
+version: 1.3.0
 owners:
   - AI PM OS maintainers
-last_updated: 2026-07-27
+last_updated: 2026-09-08
 depends_on: []
 related:
   - INDEX.md
@@ -33,14 +33,14 @@ related:
 
 AI PM OS (Artificial Intelligence Product and Project Management Operating System) is a modular operating system for AI-assisted product and project management. It helps an AI agent turn an incomplete idea, business request, or existing-product problem into a traceable delivery system without disguising uncertainty as fact.
 
-Version `1.2.0` hardens the Phase 11 plugin for public distribution. It adds interactive human-only gate approval, evidence hashes, project-path and symlink containment, prompt-injection boundaries, repository secret scanning, and immutable tagged installation.
+Version `1.3.0` adds a governed Jira Sprint Planning Exchange: normalized planning evidence, a capacity- and velocity-aware recommendation, and a PM-confirmed Jira import package for Epic, Story, Task, and Sub-task drafts. It retains the Phase 11 public-distribution safeguards, including interactive human-only gate approval, evidence hashes, project-path and symlink containment, prompt-injection boundaries, repository secret scanning, and immutable tagged installation.
 
 ## Install for Codex
 
 Add this public repository as a plugin marketplace, then install the plugin:
 
 ```bash
-codex plugin marketplace add databoh/ai-project-management-os --ref v1.2.0
+codex plugin marketplace add databoh/ai-project-management-os --ref v1.3.0
 codex plugin add ai-project-management-os@personal
 ```
 

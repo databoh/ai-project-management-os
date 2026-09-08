@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "source": {
+    "system": "Jira",
+    "observedAt": "2026-09-08T00:00:00Z",
+    "boardId": "Replace with the Jira board identifier",
+    "projectKey": "Replace with the Jira project key",
+    "queryReference": "Replace with the saved filter, report, or export reference used for this data"
+  },
+  "team": {
+    "id": "Replace with a stable team identifier",
+    "members": [
+      {
+        "id": "Use a pseudonymous member or role identifier",
+        "role": "Optional role",
+        "availabilityRatio": 0.8
+      }
+    ],
+    "availabilityRatio": 0.8,
+    "knownNonDeliveryLoad": 0.15,
+    "operatingBuffer": 0.1,
+    "planningPointLimit": 18,
+    "capacityObservationAt": "2026-09-08T00:00:00Z"
+  },
+  "sprintHistory": [
+    {
+      "id": "Replace with a sprint identifier",
+      "name": "Optional sprint name",
+      "completedAt": "2026-09-01T00:00:00Z",
+      "committedPoints": 20,
+      "completedPoints": 18,
+      "scopeChangedPoints": 2,
+      "teamComparable": true,
+      "definitionOfDoneComparable": true
+    }
+  ],
+  "backlog": [
+    {
+      "key": "Replace with a Jira issue key",
+      "summary": "Replace with an existing backlog item summary",
+      "issueType": "Story",
+      "statusCategory": "To Do",
+      "priorityRank": 1,
+      "estimatePoints": 3,
+      "ready": true,
+      "blocked": false,
+      "parentKey": "Optional existing Epic key",
+      "dependsOn": []
+    }
+  ]
+}

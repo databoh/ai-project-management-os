@@ -2,10 +2,10 @@
 title: AI PM OS Index
 type: index
 status: active
-version: 1.2.0
+version: 1.3.0
 owners:
   - AI PM OS maintainers
-last_updated: 2026-07-27
+last_updated: 2026-09-08
 depends_on: []
 related:
   - README.md
@@ -35,6 +35,7 @@ Use this page as the canonical navigation map for all implemented phases.
 - [Run phase skill](plugins/ai-project-management-os/skills/ai-pm-run-phase/SKILL.md) — current-stage execution, approved delivery work, gate routing, and transition.
 - [Gate review skill](plugins/ai-project-management-os/skills/ai-pm-gate-review/SKILL.md) — evidence-based G0–G7 assessment and authorized state changes.
 - [Project status skill](plugins/ai-project-management-os/skills/ai-pm-status/SKILL.md) — read-only lifecycle and control reporting.
+- [Jira Sprint Planning skill](plugins/ai-project-management-os/skills/ai-pm-jira-sprint/SKILL.md) — controlled Jira evidence import, Sprint recommendation, and PM-reviewed export package.
 
 ## Core operating system
 
@@ -156,6 +157,7 @@ Use this page as the canonical navigation map for all implemented phases.
 ## Delivery tools
 
 - [Jira](tools/jira.md) — governed hierarchy, work types, workflows, boards, fields, automation, permissions, and dashboards.
+- [Jira Sprint Planning Exchange](tools/jira-planning-exchange.md) — file-backed Sprint-history and capacity exchange, conservative recommendation, and PM-controlled Epic, Story, and Sub-task package.
 - [ClickUp](tools/clickup.md) — governed Workspace hierarchy, task types, statuses, fields, views, automation, and permissions.
 
 ## Operational playbooks

@@ -2,10 +2,10 @@
 title: Codex Plugin Installation and Smoke Testing
 type: user-guide
 status: active
-version: 1.2.0
+version: 1.3.0
 owners:
   - AI PM OS maintainers
-last_updated: 2026-07-27
+last_updated: 2026-09-08
 depends_on:
   - ../plugins/ai-project-management-os/.codex-plugin/plugin.json
   - ../.agents/plugins/marketplace.json
@@ -32,7 +32,7 @@ Run these commands on the computer where the plugin will be used. Add the public
 repository as a Codex marketplace source:
 
 ```bash
-codex plugin marketplace add databoh/ai-project-management-os --ref v1.2.0
+codex plugin marketplace add databoh/ai-project-management-os --ref v1.3.0
 ```
 
 Install the plugin from the marketplace declared by the repository:
@@ -57,7 +57,7 @@ Start a new Codex thread after installation so the new skills are loaded.
 Clone the immutable release tag from GitHub into any directory selected by the tester:
 
 ```bash
-git clone --branch v1.2.0 --depth 1 https://github.com/databoh/ai-project-management-os.git
+git clone --branch v1.3.0 --depth 1 https://github.com/databoh/ai-project-management-os.git
 cd ai-project-management-os
 ```
 
@@ -86,6 +86,7 @@ The test must return `"ok": true`. It covers:
 - rejection of symlink artifacts and skipped lifecycle stages;
 - stage transition from Intake to Discovery;
 - refusal to overwrite an existing target.
+- Jira planning-input validation, conservative Sprint recommendation, and PM-gated Jira import-package generation.
 
 Validate Markdown links:
 
@@ -183,6 +184,16 @@ After a valid gate review is active, the agent must provide an `approve-gate.mjs
 After approval, run `$ai-pm-status` and confirm that `.ai-pm-os/approvals.json` contains the approval ID, stage, gate, outcome, approver, timestamp, relative review path, and SHA-256 review hash. Modifying the approved review afterward must make project validation fail until the evidence and approval are reconciled through a new review.
 
 The interactive prompt protects against unattended agent approval. It does not provide cryptographic identity proof; organizations requiring verified identity must add their own signed approval integration.
+
+### Jira Sprint package
+
+Ask a new Codex thread:
+
+```text
+Use $ai-pm-jira-sprint to explain the planning-input contract and prepare a test Sprint recommendation without using production Jira data.
+```
+
+Use only a sanitized, disposable export. The skill must retain the Jira source and observation date, classify its output as a recommendation, reject fewer than three comparable completed Sprints for velocity-based selection, and keep the PM confirmation as the last step before creating a CSV and JSON import package. It must not request or store Jira credentials, write to Jira, or submit the package.
 
 ### Unknown values
 
